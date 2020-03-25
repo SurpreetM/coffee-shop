@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   root :to => 'welcome#index'
-  
+
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
   resources :categories
   resources :comments
   resources :purchased_items
