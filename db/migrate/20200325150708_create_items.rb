@@ -7,8 +7,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :points 
       t.integer :category_id
 
-      
-
       t.timestamps
     end
   end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root :to => 'welcome#index'
+  
   resources :categories
   resources :comments
   resources :purchased_items
