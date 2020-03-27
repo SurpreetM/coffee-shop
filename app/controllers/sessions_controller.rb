@@ -5,16 +5,15 @@ class SessionsController < ApplicationController
     end 
 
     def create
-        @user = User.find_by(id: params[:user_name])
-        #@user = user.try(:authenticate, params[:password])
+        user = User.find_by(id: params[:user_id])
+        @user = user.try(:authenticate, params[:password])
 
         if !@user 
-            redirect_to '/'
+            redirect_to '/signin' , notice: "Incorrect Password"
         else 
             session[:user_id] = @user.id
             redirect_to user_path(@user.id)
         end
-
     end
 
     def destroy

@@ -12,7 +12,10 @@ class UsersController < ApplicationController
     end 
 
     def show
-        @user = User.find(params[:id])
+        user = User.find(params[:id])
+        redirect_to '/', notice: "Forbidden action" unless session[:user_id] == user.id
+        @user = user
+        
     end 
 
     private

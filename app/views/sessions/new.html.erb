@@ -1,8 +1,11 @@
+<p> <%= flash[:notice] %> <p> 
+<h1> Sign In </h1> 
+
 <form action='signin' method='post'>
 
 <label> Your name: </label>
 
-<select name="user_name">
+<select name="user_id">
     <%= @users.each do |user| %>
       <option value="<%= user.id %>"><%= user.name %></option>
     <% end %>
@@ -16,3 +19,5 @@
 <input type='submit' value='Sign In'>
 
 </form>
+
+<p> Not a user? Sign up <a href="<%= new_user_path %>" > here </a>  </p> 
