@@ -1,6 +1,7 @@
  <%= link_to "Log out", logout_path, method: :post %>
  can't seem to make this into a post request
 
+<p> <%= @user.email %> </p> 
 <h1> Hello <%= @user.name %> </h1> 
 
 <p> You have $<%=@user.balance%> in your account. <p> 
@@ -13,3 +14,4 @@
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type='submit' value='Logout'>
 </form> 
+

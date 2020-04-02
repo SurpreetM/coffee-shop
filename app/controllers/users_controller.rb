@@ -15,8 +15,20 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         redirect_to '/', notice: "Forbidden action" unless session[:user_id] == user.id
         @user = user
-        
     end 
+
+    def edit
+        user = User.find(params[:id])
+        redirect_to '/', notice: "Forbidden action" unless session[:user_id] == user.id
+        @user = user
+    end 
+
+    def update
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        redirect_to user_path(@user)
+    end 
+
 
     private
 
