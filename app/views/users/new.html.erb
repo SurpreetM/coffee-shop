@@ -1,5 +1,12 @@
 <h1> Sign up </h1> 
 
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+    <p> <%= msg %></p>
+    <% end %>  
+<% end %>
+
+
 <%= form_for @user do |u| %>
 
     <p> <label> Check box if you are an admin </label>
@@ -19,3 +26,6 @@
 
     <p> <%= u.submit "Create User" %> </p> 
 <% end %> 
+
+<p> Already have and account? </p> 
+<a href="<%=signin_path%>" > Sign in </a> 
