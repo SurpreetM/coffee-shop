@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
     validates :name, presence: true
     validates :email, uniqueness: true
+    validates :balance, numericality: { only_integer: true }
     
 end
