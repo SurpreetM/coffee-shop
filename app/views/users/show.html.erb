@@ -1,17 +1,15 @@
- <%= link_to "Log out", logout_path, method: :post %>
- can't seem to make this into a post request
+ 
+ 
 
-<p> <%= @user.email %> </p> 
-<h1> Hello <%= @user.name %> </h1> 
+<h1> Hello <%= @user.name %> </h1>
 
-<p> You have $<%=@user.balance%> in your account. <p> 
+<p> You have $<%=@user.balance%> in your account. <p>
 
-<a href="<%= items_path %>" > Place an order </a> 
+<p> <%= button_to "Edit your details", edit_user_path, method: :get %> </p> 
+<p> <%= button_to "Place an order", items_path  %> </p> 
+<%= button_to "Log out", logout_path %>
+
+
 
 <h3> Past Purchases </h3> 
-
-<form action='/logout' method='post'>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type='submit' value='Logout'>
-</form> 
 
