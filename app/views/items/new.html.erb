@@ -12,7 +12,7 @@
     <%= i.number_field :price %> </p> 
 
     <p> <label> Points Earned </label> <br>
-    <%= i.number_field :points %> <br>  
+    <%= i.number_field :points %> <br>    
 
 
     <p> <label> Category </label> <br>
@@ -21,6 +21,8 @@
       <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
     </select>
+    <p> if the category that you are looking for below, you can add a new category here: </p> 
+    <%= i.text_field :category %> <br>
 
     <p> <%= i.submit "Save" %> </p>
 <% end %> 
