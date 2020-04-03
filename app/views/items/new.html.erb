@@ -1,0 +1,26 @@
+<h1> Adding a new Item </h1> 
+
+<%= form_for @item do |i| %>
+
+    <p> <label> Name </label> <br> 
+    <%= i.text_field :name %> </p> 
+
+    <p> <label> Description </label> <br> 
+    <%= i.text_area :description %> </p>
+
+    <p> <label> Price ($) </label> <br> 
+    <%= i.number_field :price %> </p> 
+
+    <p> <label> Points Earned </label> <br>
+    <%= i.number_field :points %> <br>  
+
+
+    <p> <label> Category </label> <br>
+    <select name="category_id">
+    <%= @categories.each do |category| %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+    </select>
+
+    <p> <%= i.submit "Save" %> </p>
+<% end %> 
