@@ -1,8 +1,15 @@
+<% if @item.errors.any? %>
+    <% @item.errors.full_messages.each do |msg| %>
+    <p> <%= msg %></p>
+    <% end %>  
+<% end %>
+
 <h1> Adding a new Item </h1> 
 
 <%= form_for @item do |i| %>
 
     <p> <label> Name </label> <br> 
+    
     <%= i.text_field :name %> </p> 
 
     <p> <label> Description </label> <br> 
@@ -12,17 +19,15 @@
     <%= i.number_field :price %> </p> 
 
     <p> <label> Points Earned </label> <br>
-    <%= i.number_field :points %> <br>    
-
-
+    <%= i.number_field :points %> <br> 
+    
     <p> <label> Category </label> <br>
-    <select name="category_id">
-    <%= @categories.each do |category| %>
-      <option value="<%= category.id %>"><%= category.name %></option>
+    <%= i.text_field :category_name, list: "categories_autocomplete" %>
+    <datalist id="categories_autocomplete">
+    <% Category.all.each do |category| %>
+      <option value="<%= category.name %>">
     <% end %>
-    </select>
-    <p> if the category that you are looking for below, you can add a new category here: </p> 
-    <%= i.text_field :category %> <br>
+    </datalist>
 
     <p> <%= i.submit "Save" %> </p>
 <% end %> 
