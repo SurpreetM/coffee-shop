@@ -1,5 +1,10 @@
-<h1> Showing all items <h1> 
+<h1> Showing all items </h1> 
 
-<% @items.each do |i| %> 
-    <%= i.name %> 
-<% end %> 
+
+    <% @categories.each do |c| %> 
+        <h3> <%= c.name %> </h3> 
+            <% c.items.each do |i| %> 
+                <p> <div style="float: left; width: auto;"> <%= link_to  i.name, item_path(i.id) %> ($<%=i.price %>) </div> <%=button_to "add to cart", item_path(i.id)%> </p> 
+            <% end %>  
+    <% end %> 
+ 
