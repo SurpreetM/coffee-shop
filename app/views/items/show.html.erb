@@ -8,4 +8,4 @@
 
 <%=button_to "add to cart", item_path(@item.id)%>
 <br> 
-<%=button_to "edit", edit_item_path(@item.id)%> 
+<%=button_to "edit", edit_item_path(@item.id), method: :get%> 

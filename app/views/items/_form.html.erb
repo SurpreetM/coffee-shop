@@ -1,0 +1,33 @@
+<% if @item.errors.any? %>
+    <% @item.errors.full_messages.each do |msg| %>
+    <p> <%= msg %></p>
+    <% end %>  
+<% end %>
+
+
+
+<%= form_for @item do |i| %>
+
+    <p> <label> Name </label> <br> 
+    
+    <%= i.text_field :name %> </p> 
+
+    <p> <label> Description </label> <br> 
+    <%= i.text_area :description %> </p>
+
+    <p> <label> Price ($) </label> <br> 
+    <%= i.number_field :price %> </p> 
+
+    <p> <label> Points Earned </label> <br>
+    <%= i.number_field :points %> <br> 
+    
+    <p> <label> Category </label> <br>
+    <%= i.text_field :category_name, list: "categories_autocomplete" %>
+    <datalist id="categories_autocomplete">
+    <% Category.all.each do |category| %>
+      <option value="<%= category.name %>">
+    <% end %>
+    </datalist>
+
+    <p> <%= i.submit "Save" %> </p>
+<% end %> 
