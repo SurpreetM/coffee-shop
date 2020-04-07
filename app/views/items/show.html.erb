@@ -10,6 +10,10 @@
 
 <%=button_to "add to cart", item_path(@item.id)%>
 <br> 
+
+<% if @user.admin %>
 <%=button_to "edit", edit_item_path(@item.id), method: :get%> 
+<% end %> 
 <br> 
+
 <%=button_to "< back to all items", items_path, method: :get%> 

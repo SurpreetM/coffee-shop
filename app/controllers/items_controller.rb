@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+    before_action :require_login
 
     def index
         @items = Item.all
@@ -42,6 +43,10 @@ class ItemsController < ApplicationController
 
     def item_params
         params.require(:item).permit(:name, :description, :price, :points, :category_name)
+    end
+
+    def require_login
+        redirect_to '/', notice: "Please sign in first" unless session.include? :user_id
     end
 
 end
