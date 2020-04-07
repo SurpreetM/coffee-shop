@@ -5,6 +5,12 @@ class Item < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments 
 
+    validates :name, presence: true
+    validates :description, presence: true
+    validates :category_name, presence: true
+    validates :price, numericality: { only_integer: true }
+    validates :points, numericality: { only_integer: true }
+
     def category_name=(name)
         self.category = Category.find_or_create_by(name: name)
     end
@@ -12,5 +18,5 @@ class Item < ApplicationRecord
     def category_name
         self.category ? self.category.name : nil
     end
-    
+
 end
