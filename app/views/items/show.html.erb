@@ -2,6 +2,8 @@
 
 <p> Description: <%=@item.description %> </p> 
 
+<p> Category: <%=@item.category_name %> </p> 
+
 <p> Price: $<%=@item.price %> </p> 
 
 <p> Points earned: $<%=@item.points %> </p> 
@@ -9,3 +11,5 @@
 <%=button_to "add to cart", item_path(@item.id)%>
 <br> 
 <%=button_to "edit", edit_item_path(@item.id), method: :get%> 
+<br> 
+<%=button_to "< back to all items", items_path, method: :get%> 
