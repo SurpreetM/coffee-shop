@@ -3,13 +3,17 @@
 
 
     <% @categories.each do |c| %> 
-        <h3> <%= c.name %> </h3> 
+        <h3> <div style="float: left; width: auto;"> <%= c.name %> </h3> </div> 
+            <% if c.items.count < 1 && @user.admin %>
+                <%=button_to "Remove Category", category_path(c.id), method: :delete%>
+            <% end %> 
+            <br> 
             <% c.items.each do |i| %> 
                 <p> <div style="float: left; width: auto;"> <%= link_to  i.name, item_path(i.id) %> ($<%=i.price %>) </div> <%=button_to "add to cart", item_path(i.id)%> </p> 
             <% end %>  
     <% end %> 
 
-
+<br> 
 <%= button_to "Your details", user_path(@user.id), method: :get%>
 <br> 
 <%= button_to "Log out", logout_path %>

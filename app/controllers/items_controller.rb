@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     def destroy
         @item = Item.find(params[:id])
         @item.destroy
-        redirect_to items_path, notice: "You deleted #{@item.name}"
+        redirect_to items_path, notice: "You deleted the item: #{@item.name}"
     end
 
     private
