@@ -8,10 +8,12 @@
 
 <p> Points earned: $<%=@item.points %> </p> 
 
+
 <%=button_to "add to cart", item_path(@item.id)%>
 <br> 
 <%=button_to "< back to all items", items_path, method: :get%> 
 <br> 
+
 
 <% if @user.admin %>
 <h3> Admin Only </h3> 
