@@ -4,7 +4,9 @@
 <p> You have $<%=@user.balance%> in your account. <p>
 
 <%= button_to "Edit your details", edit_user_path, method: :get %> 
- <%= button_to "Place an order", items_path, method: :get %>
+<br> 
+<%= button_to "Place an order", items_path, method: :get %>
+<br> 
 <%= button_to "Log out", logout_path %>
 
 

@@ -15,6 +15,7 @@
 
 <% if @user.admin %>
 <h3> Admin Only </h3> 
-<%=button_to "edit", edit_item_path(@item.id), method: :get%> 
-<% end %> 
+<%=button_to "Edit", edit_item_path(@item.id), method: :get%> 
 <br> 
+<%=button_to "Delete", item_path(@item.id), method: :delete%> 
+<% end %> 
