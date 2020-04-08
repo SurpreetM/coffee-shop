@@ -7,5 +7,15 @@
                 <p> <div style="float: left; width: auto;"> <%= link_to  i.name, item_path(i.id) %> ($<%=i.price %>) </div> <%=button_to "add to cart", item_path(i.id)%> </p> 
             <% end %>  
     <% end %> 
+
+
+<%= button_to "Your details", user_path(@user.id), method: :get%>
+<br> 
+<%= button_to "Log out", logout_path %>
+<br> 
+<% if @user.admin %>
+<h3> Admin Only </h3> 
+<%= button_to "Add a new item", new_item_path, method: :get%>
+<% end %> 
  
-<%= button_to "add an item", new_item_path, method: :get%>
+

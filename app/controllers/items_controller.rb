@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
     before_action :require_login
+    before_action :admin_rights
+    skip_before_action :admin_rights, only: [:index, :show]
 
     def index
+        @user = User.find(session[:user_id])
         @items = Item.all
         @categories = Category.all
     end
@@ -22,6 +25,7 @@ class ItemsController < ApplicationController
     end 
 
     def show
+        @user = User.find(session[:user_id])
         @item = Item.find(params[:id])
     end 
 
@@ -47,6 +51,11 @@ class ItemsController < ApplicationController
 
     def require_login
         redirect_to '/', notice: "Please sign in first" unless session.include? :user_id
+    end
+
+    def admin_rights
+        @user = User.find(session[:user_id])
+        redirect_to user_path(@user.id), notice: "You do not have admin rights for that action" unless @user.admin
     end
 
 end

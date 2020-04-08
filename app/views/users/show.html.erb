@@ -1,12 +1,10 @@
- 
- 
-
+<p> <%= flash[:notice] %> </p> 
 <h1> Hello <%= @user.name %> </h1>
 
 <p> You have $<%=@user.balance%> in your account. <p>
 
-<p> <%= button_to "Edit your details", edit_user_path, method: :get %> </p> 
-<p> <%= button_to "Place an order", items_path, method: :get %> </p> 
+<%= button_to "Edit your details", edit_user_path, method: :get %> 
+ <%= button_to "Place an order", items_path, method: :get %>
 <%= button_to "Log out", logout_path %>
 
 
