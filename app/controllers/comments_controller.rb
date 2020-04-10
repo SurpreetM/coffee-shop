@@ -10,8 +10,10 @@ class CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
+        user = User.find(session[:user_id])
+        @comment.user_id = user.id
         if @comment.save
-            redirect_to item_path(@comment.item.id), notice: "Thank you for your feedback!"
+            redirect_to item_path(@comment.item.id), notice: "Thank you for your feedback #{user.name}!"
         else 
             render :new
         end

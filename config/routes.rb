@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resources :categories
-  resources :comments
+  #resources :categories
+  #resources :comments
   resources :purchased_items
   resources :items do 
-    resources :comments
+    resources :comments, only: [:new]
   end
-  resources :users
+  resources :users do 
+    resources :comments, only: [:index, :edit]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

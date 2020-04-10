@@ -16,8 +16,7 @@
     <p> <label> Item </label> <br>
     <%= c.collection_select :item_id, Item.all, :id, :name %>
     
-    <p> <label> Name </label> <br>
-    <%= c.collection_select :user_id, User.all, :id, :name %>
+    <%= c.hidden_field :user_id %>
     
     <p> <%= c.submit "Save" %> </p>
 <% end %> 
