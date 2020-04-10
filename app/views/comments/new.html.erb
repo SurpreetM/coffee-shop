@@ -1,4 +1,9 @@
-<h1> Please provide feedback on our <%= @item.name %> </h1> 
+<h1> Please provide feedback </h1> 
+<% if @comment.errors.any? %>
+    <% @comment.errors.full_messages.each do |msg| %>
+    <p> <%= msg %></p>
+    <% end %>  
+<% end %>
 
 <%= form_for @comment do |c| %>
 
@@ -7,6 +12,12 @@
 
     <p> <label> Comment </label> <br> 
     <%= c.text_area :decription %> </p>
+
+    <p> <label> Item </label> <br>
+    <%= c.collection_select :item_id, Item.all, :id, :name %>
+    
+    <p> <label> Name </label> <br>
+    <%= c.collection_select :user_id, User.all, :id, :name %>
     
     <p> <%= c.submit "Save" %> </p>
 <% end %> 

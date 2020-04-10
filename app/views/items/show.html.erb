@@ -1,3 +1,4 @@
+<p> <%= flash[:notice] %> </p> 
 <h1> <%= @item.name %> </h1> 
 
 <p> Description: <%=@item.description %> </p> 
@@ -12,6 +13,15 @@
 <%=button_to "add to cart", item_path(@item.id)%>
 <br> 
 <%=button_to "< back to all items", items_path, method: :get%> 
+<br> 
+
+<h3> Ratings and Feedback </h3> 
+<% @comments.each do |c| %> 
+    <p> <%= c.rating %> out of 5 
+    <%= c.decription %> </p> 
+<% end %> 
+<br> 
+<%=button_to "Leave a review", new_item_comment_path(@item.id), method: :get%> 
 <br> 
 
 

@@ -5,20 +5,19 @@ class CommentsController < ApplicationController
     end
 
     def new
-        @item = Item.find(params[:item_id])
         @comment = Comment.new
     end
 
     def create
-        @item = Item.find(params[:id])
-        @comment = Comment.new(item_id: params[:item_id], decription: comment_params[:decription], rating: comment_params[:rating], user_id: 1)
+        @comment = Comment.new(comment_params)
         if @comment.save
-            redirect_to comments_path
+            redirect_to item_path(@comment.item.id), notice: "Thank you for your feedback!"
         else 
-            @item = Item.find(params[:item_id])
             render :new
         end
     end 
+
+    private 
 
     def comment_params
         params.require(:comment).permit(:rating, :decription, :user_id, :item_id)
