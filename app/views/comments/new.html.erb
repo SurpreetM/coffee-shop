@@ -1,1 +1,13 @@
-<h1> Add your comment and rating <h1> 
+<h1> Please provide feedback on our <%= @item.name %> </h1> 
+
+<%= form_for @comment do |c| %>
+
+    <p> <label> Rating (out of 5) </label> <br> 
+    <%= c.number_field :rating %> </p> 
+
+    <p> <label> Comment </label> <br> 
+    <%= c.text_area :decription %> </p>
+    
+    <p> <%= c.submit "Save" %> </p>
+<% end %> 
+
