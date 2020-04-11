@@ -15,7 +15,9 @@
 
 <h3> Past Feedback </h3> 
 
-<% @user.comments.each do |c| %> 
-    <p> <%= c.item.name%> (<%=c.rating %> out of 5) <%= link_to "edit", edit_user_comment_path(@user.id) %> </p> 
-    <p> <%=button_to "Delete", comment_path(c.id), method: :delete%> </p> 
+<% @user.comments.each do |c| %>
+    <% if c.item %>  
+        <p> <%= c.item.name%> (<%=c.rating %> out of 5) <%= link_to "edit", edit_comment_path(c.id) %> </p> 
+        <p> <%=button_to "Delete", comment_path(c.id), method: :delete%> </p> 
+    <% end %> 
 <% end %> 

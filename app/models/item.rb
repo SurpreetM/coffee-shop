@@ -6,6 +6,7 @@ class Item < ApplicationRecord
     has_many :users, through: :comments 
 
     validates :name, presence: true
+    validates :name, uniqueness: true
     validates :description, presence: true
     validates :category_name, presence: true
     validates :price, numericality: { only_integer: true }

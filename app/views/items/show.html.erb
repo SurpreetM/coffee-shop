@@ -14,6 +14,7 @@
 <br> 
 <%=button_to "< back to all items", items_path, method: :get%> 
 <br> 
+<%= button_to "<< back to your details", user_path(@user.id), method: :get%>
 
 <h3> Ratings and Feedback </h3> 
 <% @comments.each do |c| %> 

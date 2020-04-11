@@ -1,10 +1,6 @@
 class CommentsController < ApplicationController
     before_action :require_login
 
-    def index
-        @comments = Comment.all
-    end
-
     def new
         @comment = Comment.new
     end
