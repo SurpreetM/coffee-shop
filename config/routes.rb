@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :purchased_items
   resources :items do 
     resources :comments, only: [:new]
+    resources :purchased_items, only: [:new]
   end
   resources :users do 
     resources :comments, only: [:edit]
