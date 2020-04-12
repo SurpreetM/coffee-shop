@@ -11,7 +11,7 @@ class PurchasedItemsController < ApplicationController
         if @purchased.save
             redirect_to user_path(user.id), notice: "Thank you for your purchase #{user.name}!"
         else 
-            render :new
+            render new_item_purchased_item_path(@item.id)
         end
     end 
 

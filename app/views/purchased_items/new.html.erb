@@ -7,12 +7,8 @@
 <% end %>
 
 <%= form_for @purchased do |p| %>
-
+    <%= p.hidden_field :user_id %>
     <p> <label> Item </label> <br>
     <%= p.collection_select :item_id, Item.all, :id, :name %>
-    
-    <%= p.hidden_field :user_id %>
-    <%= p.hidden_field :item_id %>
-    
     <p> <%= p.submit "Add to cart" %> </p>
 <% end %> 

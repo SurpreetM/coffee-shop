@@ -12,6 +12,11 @@
 
 
 <h3> Past Purchases </h3> 
+<% @user.purchased_items.each do |p| %>
+    <% if p.item %>  
+        <p> <%= p.item.name %> (<%= p.created_at %>) 
+    <% end %> 
+<% end %> 
 
 <h3> Past Feedback </h3> 
 
