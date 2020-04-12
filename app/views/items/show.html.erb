@@ -12,6 +12,8 @@
 
 <%=button_to "add to cart", item_path(@item.id)%>
 <br> 
+
+<br> 
 <%=button_to "< back to all items", items_path, method: :get%> 
 <br> 
 <%= button_to "<< back to your details", user_path(@user.id), method: :get%>

@@ -48,6 +48,14 @@ class ItemsController < ApplicationController
         redirect_to items_path, notice: "You deleted the item: #{@item.name}"
     end
 
+    def test
+        item = Item.find(params[:id])
+        user = User.find(session[:user_id])
+        purchase = PurchasedItem.new(user_id: user.id, item_id: item.id)
+        purchase.save
+        redirect_to user_path(user)
+    end
+
     private
 
     def item_params
