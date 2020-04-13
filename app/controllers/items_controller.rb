@@ -48,12 +48,18 @@ class ItemsController < ApplicationController
         redirect_to items_path, notice: "You deleted the item: #{@item.name}"
     end
 
-    def test
+    def purchase
         item = Item.find(params[:id])
         user = User.find(session[:user_id])
-        purchase = PurchasedItem.new(user_id: user.id, item_id: item.id)
-        purchase.save
-        redirect_to user_path(user)
+        if item.price < user.balance
+            user.balance -= item.price
+            user.save
+            purchase = PurchasedItem.new(user_id: user.id, item_id: item.id)
+            purchase.save
+            redirect_to user_path(user)
+        else 
+            redirect_to item_path(item.id), notice: "You do not have enough in your account for this item "
+        end
     end
 
     private

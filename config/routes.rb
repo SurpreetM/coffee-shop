@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  #resources :categories
+  post '/item/:id/purchase' => 'items#purchase'
+  post '/items/purchase' => 'items#purchase'
+
   resources :comments
-  resources :purchased_items
   resources :items do 
     resources :comments, only: [:new]
-    resources :purchased_items, only: [:new]
   end
   resources :users do 
     resources :comments, only: [:edit]
