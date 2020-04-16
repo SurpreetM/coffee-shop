@@ -1,5 +1,5 @@
-<p> <%= flash[:notice] %> </p> 
 <h1> <%= @item.name %> </h1> 
+<p> <%= flash[:notice] %> </p> 
 
 <p> Description: <%=@item.description %> </p> 
 
@@ -7,20 +7,23 @@
 
 <p> Price: $<%=@item.price %> </p> 
 
-<p> Points earned: $<%=@item.points %> </p> 
 
-
-<%= button_to "purchase", action: "purchase"%> 
+<%= button_to "Purchase", action: "purchase"%> 
 <br> 
-<%=button_to "< back to all items", items_path, method: :get%> 
+<%=button_to "< Back to all items", items_path, method: :get%> 
 <br> 
-<%= button_to "<< back to your details", user_path(@user.id), method: :get%>
+<%= button_to "<< Back to your details", user_path(@user.id), method: :get%>
 
-<h3> Ratings and Feedback </h3> 
+<h3> Ratings and Feedback 
+<%= @item.average_rating %> out of 5 </h3> 
+<%= @item.comments_count %> customer reviews
+
+<ul> 
 <% @comments.each do |c| %> 
-    <p> <%= c.rating %> out of 5 
-    <%= c.decription %> </p> 
+    <li> <%= c.rating %> out of 5 
+    <%= c.decription %> </li> 
 <% end %> 
+</ul> 
 <br> 
 <%=button_to "Leave a review", new_item_comment_path(@item.id), method: :get%> 
 <br> 

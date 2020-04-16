@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   post '/item/:id/purchase' => 'items#purchase'
-  post '/items/purchase' => 'items#purchase'
+  
 
   resources :comments
   resources :items do 

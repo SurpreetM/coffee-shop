@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     def create
         @item = Item.new(item_params)
         if @item.save
-            redirect_to item_path(@item.id)
+            redirect_to item_path(@item.id), notice: "New Item Added"
         else 
             render :new
         end 
@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
             redirect_to item_path(item.id), notice: "You do not have enough in your account for this item "
         end
     end
+
 
     private
 

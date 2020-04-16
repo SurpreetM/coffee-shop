@@ -9,11 +9,15 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         user = User.find(session[:user_id])
         @comment.user_id = user.id
-        if @comment.save
-            redirect_to item_path(@comment.item.id), notice: "Thank you for your feedback #{user.name}!"
+        if user.purchased_items.item.include? @comment.item
+            if @comment.save
+                redirect_to item_path(@comment.item.id), notice: "Thank you for your feedback #{user.name}!"
+            else 
+                render :new
+            end
         else 
-            render :new
-        end
+            redirect_to new_comment_path, notice: "You can only rate item you have previously purchased." 
+        end 
     end 
 
     def edit
@@ -46,5 +50,6 @@ class CommentsController < ApplicationController
     def require_login
         redirect_to '/', notice: "Please sign in first" unless session.include? :user_id
     end
+
 
 end

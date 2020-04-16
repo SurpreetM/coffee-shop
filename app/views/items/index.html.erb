@@ -1,6 +1,5 @@
-<p> <%= flash[:notice] %> </p> 
 <h1> Showing all items </h1> 
-
+<p> <%= flash[:notice] %> </p> 
 
     <% @categories.each do |c| %> 
         <h3> <div style="float: left; width: auto;"> <%= c.name %>  </div> </h3> 
@@ -9,7 +8,7 @@
             <% end %> 
             <br> 
             <% c.items.each do |i| %> 
-                <p> <div style="float: left; width: auto;"> <%= link_to  i.name, item_path(i.id) %> ($<%=i.price %>) </div> <%= button_to "Purchase", action: "purchase"%> </p> 
+                <p> <%= link_to  i.name, item_path(i.id) %> ($<%=i.price %>) </p> 
             <% end %>  
     <% end %> 
 
