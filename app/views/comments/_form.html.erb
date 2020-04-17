@@ -15,9 +15,11 @@
     <%= c.text_area :decription %> </p>
 
     <p> <label> Item </label> <br>
-    <%= c.collection_select :item_id, Item.all, :id, :name %>
+    <%= c.collection_select :item_id, Item.all , :id, :name %>
     
     <%= c.hidden_field :user_id %>
     
     <p> <%= c.submit "Save" %> </p>
 <% end %> 
+
+<%= button_to "< Back to all items", items_path, method: :get %>
