@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
     before_action :require_login
     before_action :admin_rights
-    skip_before_action :admin_rights, only: [:index, :show]
+    skip_before_action :admin_rights, only: [:index, :show, :purchase]
 
     def index
         @user = User.find(session[:user_id])

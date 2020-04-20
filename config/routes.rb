@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post '/item/:id/purchase' => 'items#purchase'
   
-
+  resources :categories
   resources :comments
   resources :items do 
     resources :comments, only: [:new]
