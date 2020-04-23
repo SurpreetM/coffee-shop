@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
         @user = User.find(session[:user_id])
         @items = Item.all
         @categories = Category.all
+        highrated = Item.rated_above(4)
+        @highrated = highrated.uniq
     end
 
     def new

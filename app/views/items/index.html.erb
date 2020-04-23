@@ -1,6 +1,13 @@
 <h1> Showing all items </h1> 
 <p> <%= flash[:notice] %> </p> 
 
+    <br> 
+    <h2> Rated 4 stars and above </h2> 
+    <% @highrated.each do |i| %> 
+        <p> <%= link_to  i.name, item_path(i.id) %> ($<%=i.price %>) </p> 
+    <% end %>
+    <br> 
+    <h2> All items by Category </h2> 
     <% @categories.each do |c| %> 
         <h3> <div style="float: left; width: auto;"> <%= c.name %>  </div> </h3> 
             <% if c.items.count < 1 && @user.admin %>

@@ -1,0 +1,16 @@
+
+<h1> Users </h1> 
+
+<h3> Placed most orders </h3> 
+<ul>
+<% @users_with_purchases.each do |u| %> 
+   <li> <%= u.name %>, <%= u.purchased_items.count %> </li> 
+<% end %> 
+</ul> 
+
+<h3> Provided most feedback</h3> 
+<ul>
+<% @users_with_comments.each do |u| %> 
+   <li> <%= u.name %>, <%= u.comments.count %> </li> 
+<% end %> 
+</ul> 

@@ -11,6 +11,8 @@ class Item < ApplicationRecord
     validates :category_name, presence: true
     validates :price, numericality: { only_integer: true }
 
+    scope :rated_above, -> (num) { joins(:comments).where('rating > ?', num)}
+
     def category_name=(name)
         self.category = Category.find_or_create_by(name: name)
     end

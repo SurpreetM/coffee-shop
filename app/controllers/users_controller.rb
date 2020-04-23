@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+    def index
+        users_with_purchases = User.purchased(0)
+        @users_with_purchases = users_with_purchases.uniq
+
+        users_with_comments = User.commented(0)
+        @users_with_comments = users_with_comments.uniq
+    end 
+
     def new
         @user = User.new
     end 
