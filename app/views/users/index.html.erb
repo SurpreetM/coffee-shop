@@ -1,16 +1,20 @@
 
-<h1> Users </h1> 
+<h1> Customer Data </h1> 
 
-<h3> Placed most orders </h3> 
-<ul>
-<% @users_with_purchases.each do |u| %> 
-   <li> <%= u.name %>, <%= u.purchased_items.count %> </li> 
+<h3> Number of orders placed per customer </h3> 
+<% @users_purchases.each do |u| %> 
+   <li> <%= u.name %>: <%= u.purchased_items.count %> items </li> 
 <% end %> 
 </ul> 
 
-<h3> Provided most feedback</h3> 
-<ul>
-<% @users_with_comments.each do |u| %> 
-   <li> <%= u.name %>, <%= u.comments.count %> </li> 
+<h3> Number of ratings given per customer </h3> 
+<% @users_comments.each do |u| %> 
+   <li> <%= u.name %>:  <%= u.comments.count %> ratings </li> 
 <% end %> 
 </ul> 
+
+<br> 
+<%= button_to "Back to Your details", user_path(@user.id), method: :get%>
+<br> 
+<%= button_to "View all items", items_path, method: :get %>
+

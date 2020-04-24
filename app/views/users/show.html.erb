@@ -9,6 +9,11 @@
 <br> 
 <%= button_to "Log out", logout_path %>
 
+<% if @user.admin %>
+<h3> Admin Only </h3> 
+<%= button_to "Customer Data", users_path, method: :get%>
+<% end %> 
+
 
 
 <h3> Past Purchases </h3> 

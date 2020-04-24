@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
     def index
-        users_with_purchases = User.purchased(0)
-        @users_with_purchases = users_with_purchases.uniq
+        @user = User.find(session[:user_id])
+        redirect_to user_path(@user.id), notice: "You do not have admin rights for that action" unless @user.admin
 
-        users_with_comments = User.commented(0)
-        @users_with_comments = users_with_comments.uniq
+        @users_purchases = User.joins(:purchased_items).group("user_id").order("count(user_id) DESC")
+        @users_comments = User.joins(:comments).group("user_id").order("count(user_id) DESC")
     end 
 
     def new
