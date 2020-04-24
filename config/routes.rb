@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+  get '/auth/facebook/callback' => 'sessions#create'
+
   post '/item/:id/purchase' => 'items#purchase'
   
   resources :categories
