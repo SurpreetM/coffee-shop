@@ -5,23 +5,24 @@ class SessionsController < ApplicationController
     end 
 
     def create
-        if  request.env['omniauth.auth']
-            @user = User.find_or_create_by(uid: request.env['omniauth.auth']['uid']) do |u|
-            u.name = auth['info']['name']
-            u.email = auth['info']['email']
+        if auth
+            @user = User.find_or_create_by(uid: auth['uid']) do |u|
+                u.name = auth['info']['name']
+                u.email = auth['info']['email']
             end 
             session[:user_id] = @user.id
             redirect_to user_path(@user.id)
-        else
+        else 
             user = User.find_by(id: params[:user_id])
-            @user = user.try(:authenticate, params[:password])
-            session[:user_id] = @user.id
-            redirect_to user_path(@user.id)  
-            if !@user 
-                redirect_to '/signin' , notice: "Incorrect Password"
-            end 
+            if user.try(:authenticate, params[:password])
+                @user = user
+                session[:user_id] = @user.id
+                redirect_to user_path(@user.id)  
+                elsif !@user 
+                    redirect_to '/signin' , notice: "Incorrect Password"  
+            end
         end       
-    end
+    end 
 
     def destroy
         session.delete :user_id

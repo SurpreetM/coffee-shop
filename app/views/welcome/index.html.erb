@@ -3,6 +3,8 @@
 
 <%= button_to "Sign up", new_user_path, method: :get %> 
 <br> 
+<%= link_to('Log in with Github!', '/auth/github') %>
+<br> 
 <%= link_to('Log in with Facebook!', '/auth/facebook') %>
 <p> Already have and account? 
 <%= link_to "Sign in", signin_path %> </p> 
