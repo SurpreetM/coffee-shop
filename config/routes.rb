@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   get '/auth/facebook/callback' => 'sessions#create'
-  get '/app/:github/callback' => 'sessions#create', via: [:get, :post]
+  get '/auth/:github/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
 
   post '/item/:id/purchase' => 'items#purchase'
