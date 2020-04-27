@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
         @user = User.find(session[:user_id])
         @items = Item.all
         @categories = Category.all
-        highrated = Item.rated_above(4)
-        @highrated = highrated.uniq
+        @highrated = Item.rated_above(4).uniq
+        @popular_items = Item.joins(:purchased_items).group("item_id").order("count(item_id) DESC").first(3)
     end
 
     def new

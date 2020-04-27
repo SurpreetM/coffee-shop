@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
         @users_purchases = User.joins(:purchased_items).group("user_id").order("count(user_id) DESC")
         @users_comments = User.joins(:comments).group("user_id").order("count(user_id) DESC")
+
+        
     end 
 
     def new
