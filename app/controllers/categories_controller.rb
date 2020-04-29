@@ -10,9 +10,9 @@ class CategoriesController < ApplicationController
     #    redirect_to categories_path
     #end 
 
-    #def index
-    #    @categories = Category.all 
-    #end
+    def index
+        @category = Category.longest_name
+    end
 
     def destroy
         @category = Category.find(params[:id])
